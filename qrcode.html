@@ -191,14 +191,15 @@
         }
 
         function downloadQR() {
-            let qrImage = document.getElementById("qrImage").src;
-            if (qrImage) {
+            let qrImage = document.getElementById("qrImage");
+            if (qrImage.src) {
                 let link = document.createElement("a");
-                link.href = qrImage;
-                link.download = "QRCode.png";
+                link.href = qrImage.src;  
+                document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link); 
             } else {
-                alert("Generate a QR code first before downloading.");
+                alert("Please generate a QR code first!");
             }
         }
     </script>
